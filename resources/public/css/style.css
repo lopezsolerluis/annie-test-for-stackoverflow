@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#menuprincipal {
+  padding: 0% 0%;
+  background-color: #9FC8D9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+ul, ol {
+  list-style:none;
+}
+
+#listamenu > li {
+  float:left;
+}
+
+#listamenu li a {
+  text-decoration:none;
+  background-color: #9FC8D9;
+  color: #222222;
+  padding:10px 12px;
+  display:block;
+}
+
+#listamenu li a:hover {
+  background-color:#6FACC6;
+}
+
+#listamenu li ul {
+  display:none;
+  position:absolute;
+  min-width:140px;
+  z-index: 1000;
+  background-color: #9FC8D9;
+  box-shadow: 3px 3px 5px rgba(100,100,100,0.7);
+}
+
+#listamenu li:hover > ul {
+  display:block;
+}
+
+#listamenu li ul li {
+  position:relative;
+}
+
+#listamenu li ul li ul {
+  right:-140px;
+  top:0px;
+}
+
+input[type=file] {
+  display: none;
+}
+
+#app {
+  /* position: absolute; */
+  /* height: 500px; */
+  background-color: #EEFFEE;
+  z-index: -1;
+}
+
+.todo {
+    margin-top: 50px;
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    /* background-color: #eafaf1; */
+    height: 90vh;
+    width: 100vw;
+}
+
+.graph {
+  /* background-color: #eafaf1; */
+   height: 90vh;
+   /* height: 90%; */
+   -ms-flex: 1 1 auto;
+   -webkit-flex: 1 1 auto;
+   flex: 1 1 auto;
+   /* margin-top: 20px; */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#fondogris {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #444444;
+  opacity: .5;
+  z-index: 9999;
+}
+#loader {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 10000;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  margin: -76px 0 0 -76px;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.etiqueta {
+  cursor: pointer;  
+}
