@@ -69,9 +69,9 @@
       ;(crear-etiqueta-2 0 0 "key-1" [30 40])   ; <- only last CustomSVGSeries shows up
       ;[crear-etiqueta-2 0 0 "key-1" [30 40]]    ; <- nothing shows up
     ]
-    (crear-etiqueta-3 0 0 "key-1" [30 40]) ; <- Works great!
-     ; (doall (for [x (range 5)]                   ;  <- Doesn't work...
-     ;   (crear-etiqueta-3 x 0 "key-1" [30 40])))  ;
+    ;(crear-etiqueta-3 0 0 "key-1" [30 40]) ; <- Works great!
+    (mapcat (fn [x] (crear-etiqueta-3 x 0 "key-1" [30 40]))  ; -> This too! :)
+            (range 5))                                       ;
     )])
 
 (defn get-app-element []
