@@ -42,15 +42,37 @@
                                                                      :stroke "black" :fill "none"}]])))}]}]
   )
 
+(defn crear-etiqueta-3 [x y id position]
+  (vector
+       [:> rvis/CustomSVGSeries {:data [{:x x :y y
+                                 :customComponent (fn []
+                                   (let [[inc-x inc-y] position]
+                                    (r/as-element [:g {:className "etiqueta"}
+                                                     [:text
+                                                       [:tspan {:x inc-x :y (+ inc-y 0)} "Hidrógeno"]
+                                                       [:tspan {:x inc-x :y (+ inc-y 18)} "Alfa"]]])))}]}]
+       [:> rvis/CustomSVGSeries {:data [{:x x :y y
+                                         :customComponent (fn []
+                                            (let [[inc-x inc-y] position]
+                                             (r/as-element [:g {:className "etiqueta"}
+                                                           [:polyline {:points [0 (if (< inc-y 5) -10 5) 0 inc-y inc-x inc-y]
+                                                                       :stroke "black" :fill "none"}]])))}]}]
+    ))
+
 (defn line-chart []
  [:div.graph
- [:> rvis/FlexibleXYPlot
-  {:margin {:left 100 :right 50 :top 20} :xDomain [-10 10] :yDomain [-10 10]}
+ (into
+   [:> rvis/FlexibleXYPlot
+      {:margin {:left 100 :right 50 :top 20} :xDomain [-10 10] :yDomain [-10 10]}
   ;(crear-etiqueta-1 0 0 "key-1" [30 40])   ; <- nothing shows up
   ;[crear-etiqueta-1 0 0 "key-1" [30 40]]   ; <- nothing shows up
-  (crear-etiqueta-2 0 0 "key-1" [30 40])   ; <- only last CustomSVGSeries shows up
+  ;(crear-etiqueta-2 0 0 "key-1" [30 40])   ; <- only last CustomSVGSeries shows up
   ;[crear-etiqueta-2 0 0 "key-1" [30 40]]    ; <- nothing shows up
-  ]])
+    ]
+    (crear-etiqueta-3 x 0 "key-1" [30 40]) ; <- Works great!
+    (doall (for [x (range 5)]                   ;  <- Doesn't work...
+      (crear-etiqueta-3 x 0 "key-1" [30 40])))  ;
+    )])
 
 (defn get-app-element []
   (gdom/getElement "app"))
